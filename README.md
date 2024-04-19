@@ -1,4 +1,4 @@
-# React + nodeJS + LO HE ROTO
+# React + nodeJS + PRUEBITA 
 
 ## Pasos a seguir 
 Antes de empezar con la clase tienes que tener en cuentas lo siguiente:
