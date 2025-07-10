@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function InputCreate() {
+function InputCreate({ setUpdated }) {
   const [title, setTitle] = useState(""); // Estado para guardar el título
   const [response, setResponse] = useState('Listo para enviar')
 
@@ -24,6 +24,7 @@ function InputCreate() {
         console.log('Success:', data);
         setResponse(`Success: ${data.title}`)
         setTitle(""); // Limpiar el input después de enviar
+        setUpdated(prev => !prev); // cambiamos de true a false para que envíe de nuevo el useEffect y actualice los datos de la home
       } else {
         throw new Error('Something went wrong');
       }
