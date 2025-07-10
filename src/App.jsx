@@ -6,6 +6,7 @@ import InputCreate from "./InputCreate.jsx";
 
 const App = () => {
   const [data, setData] = useState(null)
+  const [updated, setUpdated] = useState(false); //con esta variable cambiamos el estado como dependencia del useEffect
   const urlApi = import.meta.env.VITE_APP_API_URL
 
 const fetchData = async () => {
@@ -20,7 +21,7 @@ const fetchData = async () => {
 
 useEffect(() => {
   fetchData()
-}, [data])
+}, [updated])
 
   return (
     <Router>
@@ -34,7 +35,7 @@ useEffect(() => {
         : 
           <Routes>
             <Route path="/" element={<Home data={data} />} />
-            <Route path="/create" element={<InputCreate />} />
+            <Route path="/create" element={<InputCreate setUpdated={setUpdated}/>} />
             {data.map(item => (
               <Route key={item._id} path={`/${item._id}`} element={<ItemDetailPage item={item}/>} />
             ))
